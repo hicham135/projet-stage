@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -23,26 +22,29 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             
-            // Redirect based on user role
-            if (Auth::user()->role === 'department_head') {
-                return redirect()->route('dashboard');
-            } else {
-                return redirect()->route('employee.dashboard');
+            // Redirection selon le rôle
+            switch (Auth::user()->role) {
+                case 'hr_admin':
+                    return redirect()->route('hr.dashboard');
+                case 'department_head':
+                    return redirect()->route('dashboard');
+                case 'employee':
+                    return redirect()->route('employee.dashboard');
+                default:
+                    return redirect()->route('login');
             }
         }
  
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Identifiants incorrects.',
         ])->onlyInput('email');
     }
     
     public function logout(Request $request)
     {
         Auth::logout();
-        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
         return redirect('/login');
     }
 }
