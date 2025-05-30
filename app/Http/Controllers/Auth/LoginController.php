@@ -30,9 +30,22 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
             
+<<<<<<< HEAD
             // Définir une durée de session plus longue
             if ($remember) {
                 config(['session.lifetime' => 43200]); // 30 jours en minutes
+=======
+            // Redirection selon le rôle
+            switch (Auth::user()->role) {
+                case 'hr_admin':
+                    return redirect()->route('hr.dashboard');
+                case 'department_head':
+                    return redirect()->route('dashboard');
+                case 'employee':
+                    return redirect()->route('employee.dashboard');
+                default:
+                    return redirect()->route('login');
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
             }
             
             return $this->redirectToUserDashboard();
@@ -46,6 +59,7 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
+<<<<<<< HEAD
         
         // Invalider complètement la session
         $request->session()->invalidate();
@@ -89,5 +103,10 @@ class LoginController extends Controller
         // Supprimer le cookie "remember me"
         $rememberCookie = Auth::getRecallerName();
         cookie()->queue(cookie()->forget($rememberCookie));
+=======
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
     }
 }

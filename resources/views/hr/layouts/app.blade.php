@@ -7,7 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<<<<<<< HEAD
     <meta name="csrf-token" content="{{ csrf_token() }}">
+=======
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -20,9 +23,12 @@
                 <a href="{{ route('hr.dashboard') }}" class="list-group-item list-group-item-action bg-transparent text-dark {{ request()->routeIs('hr.dashboard') ? 'active' : '' }}">
                     <i class="fas fa-tachometer-alt me-2"></i>Tableau de bord
                 </a>
+<<<<<<< HEAD
                 <a href="{{ route('hr.attendance.index') }}" class="list-group-item list-group-item-action bg-transparent text-dark {{ request()->routeIs('hr.attendance*') ? 'active' : '' }}">
                     <i class="fas fa-user-clock me-2"></i>Mon Pointage
                 </a>
+=======
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
                 <a href="{{ route('hr.departments.index') }}" class="list-group-item list-group-item-action bg-transparent text-dark {{ request()->routeIs('hr.departments*') ? 'active' : '' }}">
                     <i class="fas fa-building me-2"></i>Départements
                 </a>
@@ -84,6 +90,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     @yield('scripts')
+<<<<<<< HEAD
     <script>
 // Heartbeat pour maintenir la session active
 setInterval(function() {
@@ -99,5 +106,7 @@ setInterval(function() {
     });
 }, 300000); // Toutes les 5 minutes
 </script>
+=======
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
 </body>
 </html>

@@ -59,7 +59,12 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'hr.admin' => \App\Http\Middleware\HRAdminMiddleware::class,
+<<<<<<< HEAD
         'department.head' => \App\Http\Middleware\DepartmentHeadMiddleware::class,
         'employee' => \App\Http\Middleware\EmployeeMiddleware::class,
+=======
+    'department.head' => \App\Http\Middleware\DepartmentHeadMiddleware::class,
+
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
     ];
 }

@@ -10,8 +10,11 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RequestController;
+<<<<<<< HEAD
 use App\Http\Controllers\DepartmentHeadAttendanceController;
 use App\Http\Controllers\HRAttendanceController;
+=======
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
 
 // Redirection racine
 Route::get('/', function () {
@@ -23,11 +26,14 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+<<<<<<< HEAD
 // Route pour maintenir la session active
 Route::post('/heartbeat', function () {
     return response()->json(['status' => 'ok']);
 })->middleware('auth');
 
+=======
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
 // ===================
 // ADMINISTRATION RH
 // ===================
@@ -58,12 +64,15 @@ Route::middleware(['auth', \App\Http\Middleware\HRAdminMiddleware::class])->pref
     // Actions d'assignation
     Route::post('/assign-employee', [HRAdminController::class, 'assignEmployee'])->name('assign-employee');
     Route::post('/remove-employee/{userId}', [HRAdminController::class, 'removeEmployee'])->name('remove-employee');
+<<<<<<< HEAD
     
     // Pointage RH Admin
     Route::get('/attendance', [HRAttendanceController::class, 'index'])->name('attendance.index');
     Route::post('/attendance/check-in', [HRAttendanceController::class, 'checkIn'])->name('attendance.check-in');
     Route::post('/attendance/check-out', [HRAttendanceController::class, 'checkOut'])->name('attendance.check-out');
     Route::get('/attendance/history', [HRAttendanceController::class, 'history'])->name('attendance.history');
+=======
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
 });
 
 // ===================
@@ -75,6 +84,7 @@ Route::middleware(['auth', \App\Http\Middleware\DepartmentHeadMiddleware::class]
     // Gestion d'équipe
     Route::resource('team', TeamController::class)->only(['index', 'show', 'edit', 'update']);
     
+<<<<<<< HEAD
     // Présences équipe
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
     Route::get('/attendance/report', [AttendanceController::class, 'report'])->name('attendance.report');
@@ -86,6 +96,11 @@ Route::middleware(['auth', \App\Http\Middleware\DepartmentHeadMiddleware::class]
         Route::post('/attendance/check-out', [DepartmentHeadAttendanceController::class, 'checkOut'])->name('attendance.check-out');
         Route::get('/attendance/history', [DepartmentHeadAttendanceController::class, 'history'])->name('attendance.history');
     });
+=======
+    // Présences
+    Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('/attendance/report', [AttendanceController::class, 'report'])->name('attendance.report');
+>>>>>>> 2c10d72de0bafb529e957a0850f1ce92235297d4
     
     // Tâches
     Route::resource('tasks', TaskController::class);
